@@ -1,6 +1,9 @@
 const Router = require('koa-router');
-const ArtileController = require('../controllers/article');
+
 const Users = require('./users');
+const Upload = require('./upload');
+const Articles = require('./articles');
+
 const router = new Router({
   // prefix: '/api'
 });
@@ -29,16 +32,8 @@ const addMapping = (router, mapping) => {
   }
 }
 addMapping(router, Users)
-
-
-/**
- * 文章接口
- */
-//创建文章
-router.post('/article/create', ArtileController.create);
-
-//获取文章详情
-router.get('/article/:id', ArtileController.detail);
+addMapping(router, Upload)
+addMapping(router, Articles)
 
 
 module.exports = router
